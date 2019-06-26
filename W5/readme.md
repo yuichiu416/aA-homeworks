@@ -1,4 +1,4 @@
-#Quick link to W5's projects
+# Links to W5's projects
 
 [D1 - ghost](./D1/ghost)
 
