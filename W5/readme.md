@@ -8,6 +8,6 @@
 
 [D3 - World Chaining Game](./D3/world_chaining_game)
 
-[D3 - recursion.rb](./recursion.rb)
+[D3 - recursion.rb](./D3/recursion.rb)
 
 [D3 - bonus_recursion.rb](./D3/bonus_recursion.rb)
