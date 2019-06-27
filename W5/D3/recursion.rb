@@ -110,37 +110,17 @@ p fib_i(7) #8
 # Make sure that these test cases are working:
 
 def bsearch(arr, key)
-    # raise "The array is not sorted" if arr != arr.sort
-    # first_idx = 0
-    # mid = arr.length / 2
-    # last = arr.length - 1
-    # return nil if arr.empty?
-    # if arr[mid] > key
-    #     left = arr[0..(mid - 1)]
-    #     return nil if key < arr[0]
-    #     bsearchl = bsearch(left, key)
-
-    # elsif arr[mid] < key
-    #     right = arr[(mid + 1)..last]
-    #     bsearchr = bsearch(right, key)
-    #     bsearchr.nil? ? nil : bsearchr + mid + 1
-    # else
-    #     return mid
-    # end
-
-    raise "The array is not sorted" if arr != arr.sort
-    mid = (0 + arr.length - 1)/2
-
+    return nil if arr.length == 1 && arr[0] != key
+    mid = arr.length/2
     if arr[mid] == key
         return mid
-    elsif arr[mid] > key
-        return nil if key < arr[0]
-        bsearchl = bsearch(arr[0..mid - 1], key)
     elsif arr[mid] < key
-        bsearchr = bsearch(arr[(mid+1)..-1], key)
-        bsearchr.nil? ? nil : bsearchr + mid + 1
+        result = bsearch(arr[mid+1..-1], key)
+        return nil if result == nil
+        return result + mid + 1
+    else
+        return bsearch(arr[0...mid], key)
     end
-
 end
 
 
@@ -156,19 +136,23 @@ p bsearch([1, 2, 3, 4, 5, 7], 6) # => nil
 # Implement a method merge_sort that sorts an Array:
 
 def merge_sort(arr)
-    return arr if arr.length <= 1
-    middle = arr.length / 2
-    left = arr[0...middle]
-    right = arr[middle...arr.length]
-    merge(merge_sort(left), merge_sort(right))
+    return arr if arr.length == 1
+    mid = arr.length/2
+    left = merge_sort(arr[0...mid])
+    right = merge_sort(arr[mid..-1])
+    merge(left, right)
 end
 
 def merge(left, right)
-    sorted = []
-    until left.empty? || right.empty?
-        sorted << (left.first <= right.first ? left.shift : right.shift)
+    ans = []
+    while !left.empty? && !right.empty?
+        if left[0] >= right[0]
+            ans << right.shift
+        else
+            ans << left.shift
+        end
     end
-    sorted + left + right
+    ans + left + right
 end
 
 
