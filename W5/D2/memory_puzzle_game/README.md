@@ -13,7 +13,7 @@ Today we're going to implement a simple command-line version of the classic [Mat
 
 Here is a glimpse of what the final product will look like when you are done:
 
-![memory game preview](https://github.com/yuichiu416/memory_game/blob/master/memory.gif "gif")
+![memory game preview](https://github.com/yuichiu416/aA-homeworks/blob/master/W5/D2/memory_puzzle_game/memory.gif "gif")
 
 # Learning Goals
 * Understand how classes interact in an object-oriented program
