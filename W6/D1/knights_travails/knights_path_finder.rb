@@ -1,11 +1,11 @@
 require_relative "../TreeNode/lib/00_tree_node.rb"
+require "byebug"
 
 class KnightPathFinder
     attr_reader :root_node, :considered_positions
     def initialize(pos)
         @root_node = PolyTreeNode.new(pos)
-        @considered_positions = []
-        @grid = Array.new(8) {Array.new(8)}
+        @considered_positions = [pos]
     end
 
     def self.valid_moves(pos)
@@ -23,28 +23,48 @@ class KnightPathFinder
     end
 
     def build_move_tree
-        @considered_positions = KnightPathFinder::valid_moves(@root_node.value)
-        queue = @considered_positions
+        queue = [@root_node]
         while !queue.empty?
             new_moves = new_move_positions(queue[0]) 
-            queue += new_moves
-            @considered_positions += new_moves
+            new_moves.each  do |pos| 
+                child = PolyTreeNode.new(pos)
+                queue << child
+                queue[0].add_child(child)
+            end
             queue.shift
         end
-
-        p "All possible positions a night can go are: #{@considered_positions}"
     end
 
-    def find_path
-        # find_path is called. Don't write this yet though.
+    def find_path(target)
+        result = @root_node.dfs(target)
+        path = []
+        while result
+            path << result.value
+            result = result.parent
+        end
+        path.reverse
+    end
+
+    def trace_back_path(target)
+        path = []
+        while target.parent.value != @root_node.value
+            path.unshift(target.value)
+            target = target.parent
+        end
+        path.unshift(target.value)
+        path.unshift(@root_node.value)
+        path
     end
     
-    def new_move_positions(pos)  
-        new_moves = KnightPathFinder::valid_moves(pos)
-        new_moves.select {|move| !@considered_positions.include?(move)}
+    def new_move_positions(parent_node)
+        new_moves = KnightPathFinder::valid_moves(parent_node.value)
+        new_moves.reject! {|child| @considered_positions.include?(child)}
+        new_moves.each { |pos| @considered_positions << pos}
+        new_moves
     end
     
 end
-
-k = KnightPathFinder.new([0, 0])
-k.build_move_tree
+if __FILE__ == $PROGRAM_NAME
+    k = KnightPathFinder.new([0,0])
+    k.build_move_tree
+end
