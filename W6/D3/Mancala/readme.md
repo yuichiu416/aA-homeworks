@@ -56,8 +56,9 @@ Player#prompt requires the input to be either `1..6` or `7..12`, but `Board#make
     12  11  10  9  8  7
 [store2]            [store1]
      1   2   3  4  5  6
-* Our board is actually setup like this:
 ```
+
+* Our board is actually setup like this:
 ```
     12  11  10  9  8  7
 [13]                   [6]
