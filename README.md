@@ -6,7 +6,7 @@
 
 [W5D1 Ghost](./W5/D1/ghost)
 
-[W5D2 Memory Puzzle Game](./W5/D1/memory_puzzle_game)
+[W5D2 Memory Puzzle Game](./W5/D2/memory_puzzle_game)
 
 [W5D3 World Chaining Game](./W5/D3/world_chaining_game)
 
