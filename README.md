@@ -11,3 +11,7 @@
 [W5D3 World Chaining Game](./W5/D3/world_chaining_game)
 
 [W6D1&W6D2 Knights Travails](./W6/D1/knights_travails)
+
+[W6D3 Mancala](./W6/D3/Mancala)
+
+[W6D4 Simon](./W6/D4/Simon)
