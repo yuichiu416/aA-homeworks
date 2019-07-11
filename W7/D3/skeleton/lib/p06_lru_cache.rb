@@ -1,5 +1,4 @@
 require_relative 'p05_hash_map'
-require_relative 'p04_linked_list'
 
 class LRUCache
   def initialize(max, prc)
@@ -14,6 +13,7 @@ class LRUCache
   end
 
   def get(key)
+
   end
 
   def to_s
