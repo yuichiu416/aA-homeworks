@@ -1,0 +1,5 @@
+system('git add .')
+sleep(5)
+system('git commit -m "updated"')
+sleep(5)
+system('git push')
