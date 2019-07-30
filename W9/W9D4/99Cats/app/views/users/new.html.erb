@@ -1,0 +1,21 @@
+<form action="/users" method="POST">
+
+  <label for="user_name">Username</label>
+  <input
+    type="text"
+    name="user[user_name]"
+    id="user-username"
+    value="<%=@user.user_name%>">
+
+  <label for="password">Password</label>
+  <input
+    type="string"
+    name="user[password]"
+    id="user-password"
+    value="<%=@user.password%>">
+  <br>
+
+  
+
+  <input type="submit" value="Create Your Account">
+</form>
